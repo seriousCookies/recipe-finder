@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import FormChecklist from './FormChecklist';
 
-const Form = ({ formHandler }) => {
+const Form = ({ formHandler, dietOptions, intolerance }) => {
   const [inputValue, setInputValue] = useState();
+  const [showOptions, setShowOptions]= useState(false);
+
   const clearAll = e => {
     e.preventDefault();
     setInputValue();
@@ -18,6 +20,10 @@ const Form = ({ formHandler }) => {
     }
     setInputValue('');
   };
+  const optionHandlers = e => {
+    e.preventDefault();
+    setShowOptions(!showOptions);
+  }
   return (
     <form
       className="foodquery-form"
@@ -36,8 +42,9 @@ const Form = ({ formHandler }) => {
             Submit
       </button>
       <button
-      onClick= {<FormChecklist/>}
-      >More options...</button>
+      onClick={optionHandlers}
+      >{showOptions ? 'Hide options': 'Show options' }</button>
+      {showOptions ? <FormChecklist dietOptions={dietOptions} intolerance={intolerance}/> : '' }
       <button
         type="submit"
         className="foodqueryform_clear-btn btn"
