@@ -1,9 +1,16 @@
 import React from 'react';
+import RecipeItem from './RecipeItem';
 
-const RecipeList = () => {
+const RecipeList = ({foodOptions}) => {
+
   return (
     <>
-    this is the RecipeList now
+    {foodOptions.map(t => (
+      <RecipeItem
+      id={t.id}
+      title={t.title}
+      image={t.image} />
+    ))}
 
     </>
   );

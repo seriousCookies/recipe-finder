@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-export async function getSearch(search) {
+export async function getSearch(query) {
   try {
     const urlBase = 'http://localhost:8080/api/search'
-    const url = `${urlBase}/${search}`;
+    const url = `${urlBase}/${query}`;
     const res = await axios.get(url);
     return res.data;
   } catch (err) {

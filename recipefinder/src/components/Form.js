@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import FormChecklist from './FormChecklist';
 
 const Form = ({ formHandler }) => {
   const [inputValue, setInputValue] = useState();
@@ -34,6 +35,9 @@ const Form = ({ formHandler }) => {
         hidden={!inputValue}>
             Submit
       </button>
+      <button
+      onClick= {<FormChecklist/>}
+      >More options...</button>
       <button
         type="submit"
         className="foodqueryform_clear-btn btn"
