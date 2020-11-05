@@ -1,0 +1,41 @@
+{
+  "name": "foodgallery",
+  "version": "1.0.0",
+  "description": "food gallery testing",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.11.0",
+    "eslint-config-salt": "^1.1.0",
+    "jest": "^26.5.3",
+    "jest-runner": "^26.6.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon",
+    "test": "jest --coverage",
+    "lint": "eslint '**/*.js'",
+    "lint-watch": "nodemon --exec 'npm run lint --silent'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hutor04/salt-gallery-cyberducks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hutor04/salt-gallery-cyberducks/issues"
+  },
+  "homepage": "https://github.com/hutor04/salt-gallery-cyberducks#readme",
+  "engines": {
+    "node": "14.x",
+    "npm": "6.x"
+  }
+}
