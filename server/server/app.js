@@ -12,9 +12,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/api/search', recipesAPI);
 app.use('/api/recipe', recipeAPI);
-app.get('/',  (req, res) => {
-  res.send('hello world')
-})
 app.use((req, res) => {
   res.status(404).json({ error: 'Not found.' });
 });
