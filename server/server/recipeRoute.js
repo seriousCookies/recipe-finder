@@ -4,29 +4,21 @@ const router = express.Router();
 
 global.fetch = fetch;
 const key =`apiKey=${process.env.ACCESS_KEY}`
-const baseURL = `https://api.spoonacular.com/recipes/complexSearch?${key}`;
-// ?query=pasta&diet=vegetarian&number=10&intolerances=gluten&apiKey=454119a7cbab410a91e8d773a7274846
+const baseURL = `https://api.spoonacular.com/recipes/`;
 const headers = {
   "Content-Type": "application/json",
 }
-const params = req => {
-parameters = req.params;
-  const paramsArr= []
-  for (const [key, value] of Object.entries(parameters)) {
-  value !== 'null' ? paramsArr.push(`&${key}=${value}`): null;
-  }
-  const paramString = paramsArr.join('');
-  return paramString;
-}
 
-router.get('/:query/:diet/:intolerance', (req, res) => {
-const p = params(req);
-const url =`${baseURL}${p}`;
+router.get('/:id', (req, res) => {
+const id = req.params.id;
+const url =`${baseURL}${id}/analyzedInstructions?${key}`;
 console.log(url);
   fetch(url, { method: 'GET', headers: headers})
   .then((res) =>  res.json())
   .then((json) => {
-    res.json(json.results);
+    const data = json[0].steps;
+    const filteredData = data.map(x=>x.step)
+    res.json(filteredData);
   })
   .catch(err => {
     console.log(err);
