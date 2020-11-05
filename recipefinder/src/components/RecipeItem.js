@@ -4,9 +4,9 @@ const RecipeItem = ({id, title, image}) => {
 
   return (
     <>
-    <div class="gallery">
-            <img src={image} alt={title} width="60" height="40"/>
-            <div class="desc">{title}</div>
+    <div className="gallery">
+            <img className="gallery_img" src={image} alt={title}/>
+            <div className="gallery_desc">{title}</div>
     </div>
     </>
   );

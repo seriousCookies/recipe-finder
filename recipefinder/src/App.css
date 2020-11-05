@@ -1,38 +1,68 @@
-.App {
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  width: 60%;
+  background-color: aliceblue;
+}
+.main-container > h1 {
+text-align: center;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin: 5%;
+  padding:2% 5%;
+
+  background-color: skyblue;
+}
+.form_input {
+  border-style: none;
+  background: transparent;
+  border-bottom: 2px solid white;
+  transition: border-color 0.2s;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: row;
+  font-size: 1.2rem;
+  text-align: left;
+}
+.form_input::placeholder {
+  color: white;
+ }
+
+.form_input:focus {
+  outline: none;
+ }
+
+.content-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  background-color: lightblue;
+  margin-bottom: auto;
+  padding: 2%;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.content-container > h2 {
+  width: 60%;
+  margin: 2% 20%;
+  height:auto;
+}
+.gallery {
+  width: 30%;
+}
+.gallery_img {
+  width: 80%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.gallery_desc {
+  text-align: center;
 }

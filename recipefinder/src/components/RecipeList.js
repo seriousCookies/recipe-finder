@@ -5,12 +5,13 @@ const RecipeList = ({foodOptions}) => {
 
   return (
     <>
-    {foodOptions.map(t => (
+    {foodOptions? foodOptions.map(t => (
       <RecipeItem
       id={t.id}
+      key={t.id}
       title={t.title}
       image={t.image} />
-    ))}
+    )):()=> ''}
 
     </>
   );
