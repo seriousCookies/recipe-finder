@@ -1,13 +1,28 @@
-import React from 'react';
+import React, { useState }  from 'react';
+import {getRecipe} from './ApiClient';
+import {fetchData} from '../App';
+import RecipeSteps from './RecipeSteps';
+const RecipeItem = ({id, title, image}) => {
+const [recipe, setRecipe]=useState();
 
-const RecipeItem = ({fetchData, id, title, image}) => {
+const fetchRecipes= async e => {
+e.preventDefault();
+await fetchData(id,getRecipe, setRecipe)
+}
 
   return (
     <>
-    <div className="gallery">
+    <button
+    onClick={fetchRecipes}
+    className="gallery btn">
             <img className="gallery_img" src={image} alt={title}/>
             <div className="gallery_desc">{title}</div>
-    </div>
+            {recipe ?
+              <RecipeSteps
+              recipe={recipe}
+              />
+            :''}
+    </button>
     </>
   );
 }

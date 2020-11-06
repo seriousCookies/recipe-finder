@@ -13,7 +13,6 @@ const Form = ({ foodOptions, setFoodOptions, formHandler, dietOptions, intoleran
     dietOptions('');
     intolerance('');
     setFoodOptions([]);
-    console.log(foodOptions.length);
   };
   const inputHandler = e => {
     setInputValue(e.target.value);

@@ -4,7 +4,7 @@ import RecipeList from './components/RecipeList'
 import {getSearch} from './components/ApiClient'
 import './App.scss';
 
-const fetchData = async (query, fn, setState) => {
+export const fetchData = async (query, fn, setState) => {
   const newData = await fn(query);
   setState(newData);
 }
@@ -63,7 +63,6 @@ const App = () => {
       
       {query&&query.length>0 ? <h2>{diet} {query}s{filtered.length >0 ? ` with no `+ filtered.toLocaleLowerCase() :''}</h2>: ''}
     <RecipeList
-    fechData= {fetchData}
     foodOptions={foodOptions ? foodOptions:''}/>
     {query&&query.length>0 ? <><button
     className="nav-btn prev-btn btn"

@@ -1,13 +1,12 @@
 import React from 'react';
 import RecipeItem from './RecipeItem';
 
-const RecipeList = ({foodOptions, fetchData}) => {
+const RecipeList = (props) => {
 
   return (
     <div className= 'gallery-container'>
-    {foodOptions? foodOptions.map(t => (
+    {props.foodOptions? props.foodOptions.map(t => (
       <RecipeItem
-      fetchData={fetchData}
       id={t.id}
       key={t.id}
       title={t.title}
