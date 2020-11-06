@@ -20,28 +20,30 @@ const FormChecklist = ({dietOptions, intolerance}) => {
 useEffect(()=> {
   intolerance(isChecked);
   dietOptions(dropDown);
-},[isChecked, dropDown]);
+},[isChecked, dropDown, intolerance, dietOptions]);
     return (
 <>
-<select key='dropdown' value= {dropDown} onChange={selectHandler}>
+
+<select className="select-main" key='dropdown' value= {dropDown} onChange={selectHandler}>
   <option key='1' value='' >No dietary preference</option>
   <option key='2' value= "Vegetarian">Vegetarian</option>
   <option key='3' value= "Vegan">Vegan</option>
   <option key='4' value= "Gluten Free">Gluten Free</option>
   <option key='5' value= "Ketogenic">High Protein</option>
 </select>
-<br/>
 {intoleranceList.map(i => 
 ( <span key={"span"+i}>
   <input
+  className="checkbox-input" 
   type="checkbox"
   name= {i}
   key={i}
   checked={isChecked[i]}
   onChange={checkboxHandler}
   />
-
-  <label key={i + 1}>{i}</label>
+  <label 
+  className="checkbox-label"
+  key={i + 1}>{i}</label>
   </span>)
 )}
 </>      

@@ -1,0 +1,172 @@
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  width: 60%;
+  color: #3283a8;
+  background-color: aliceblue;
+}
+.main-container > h1 {
+  margin: 5% 0 0 0;
+text-align: center;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin: 5%;
+  padding:3% 3% 2%;
+  width:80%;
+  background-color: skyblue;
+}
+.form {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  width:100%; 
+
+}
+
+/* floating label https://codepen.io/peiche/pen/xOVpPo */
+.form_input {
+  border-style: none;
+  background: transparent;
+  border-bottom: 2px solid white;
+  width:100%;
+  margin:5%;
+  transition: border-color 0.2s;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: row;
+  font-size: 1.2rem;
+  text-align: left;
+}
+.form_input::placeholder {
+  color: white;
+ }
+
+.form_input:focus {
+  outline: none;
+ }
+
+.has-float-label {
+  position: relative; 
+  padding:0;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.form_input-placeholder {
+  position: absolute;
+  top: 0;
+  padding: 7px 0 0 13px;
+  transition: all 200ms;
+}
+
+.form-control:focus + .form_input-placeholder,
+.form-control:valid + .form_input-placeholder {
+  font-size: 75%;
+  transform: translate3d(0, -100%, 0);
+  color: #3283a8;
+}
+
+.btn {
+  background: transparent;
+  color: white;
+  border-style: none;
+  outline: none;
+  width:100%;
+  margin-bottom:2%;
+  text-align: left;
+}
+.btn:active {
+  outline: none;
+  border-style: none;
+}
+.options-btn:active {
+color:#3283a8;
+}
+.select-main {
+  background-color:transparent;
+  color: white;
+  border-style: none;
+  font-size: 1rem;
+}
+.checkbox-input {
+color: white;
+}
+.checkbox-label {
+  color: white;
+  }
+
+.content-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  background-color: lightblue;
+  margin-bottom: auto;
+  padding: 2%;
+  text-align: center;
+}
+.content-container > h2 {
+  width: 60%;
+  margin: 2% 20%;
+  height:auto;
+}
+.gallery-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.gallery {
+  width: 30%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: 2% 0%;
+}
+.gallery_desc {
+    display:none;
+  }
+.gallery_img {
+  width:80%;
+}
+  
+.gallery-container{
+  margin:0 auto;
+  position:relative;
+  &:hover .gallery_img{
+    opacity:.8;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+  }
+
+  &:hover 
+  .gallery_desc {
+    font-size: 1rem;
+    &:hover {
+      display:block;
+    }
+  }
+  .gallery_img {
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    float: left;
+    margin: 1px;
+    opacity: 1;
+    transition: all .3s linear;
+    &:hover {
+    box-shadow: 0 5px 15px gba(0,0,0,0.4);
+    opacity: 1;
+    transform: scale(1.08);
+    -webkit-filter: blur(0);filter: blur(0);
+    }
+
+  }
+}

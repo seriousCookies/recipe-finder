@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Form from './components/Form';
 import RecipeList from './components/RecipeList'
 import {getSearch} from './components/ApiClient'
-import './App.css';
+import './App.scss';
 
 const fetchData = async (query, fn, setState) => {
   const newData = await fn(query);
@@ -59,7 +59,7 @@ const App = () => {
     </article>
     <article className= "content-container">
       
-      {query ? <h2>{diet} {query}s{filtered.length >0 ? ` with no `+ filtered :''}</h2>: ''}
+      {query&&query.length>0 ? <h2>{diet} {query}s{filtered.length >0 ? ` with no `+ filtered.toLocaleLowerCase() :''}</h2>: ''}
     <RecipeList foodOptions={foodOptions ? foodOptions:''}/>
     </article>
     </section>

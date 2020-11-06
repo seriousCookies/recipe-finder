@@ -9,6 +9,9 @@ const Form = ({ formHandler, dietOptions, intolerance }) => {
     e.preventDefault();
     setInputValue();
     formHandler([]);
+    setInputValue('');
+    dietOptions('');
+    intolerance('');
   };
   const inputHandler = e => {
     setInputValue(e.target.value);
@@ -18,9 +21,6 @@ const Form = ({ formHandler, dietOptions, intolerance }) => {
     if (inputValue !== '') {
         formHandler(inputValue);
     }
-    // setInputValue('');
-    // dietOptions('');
-    // intolerance('');
     setShowOptions(false);
   };
   const optionHandlers = e => {
@@ -31,25 +31,32 @@ const Form = ({ formHandler, dietOptions, intolerance }) => {
     <form
     className="form"
     onSubmit={inputValue ? submitHandler : () => ''}>
+    <div className="has-float-label">
     <input
-      className="form_input"
+      className="form_input form-control"
       type="text"
       value={inputValue || ''}
-      placeholder="Enter your Search..."
-      onChange={inputHandler} />
+      onChange={inputHandler}
+      required /> 
+      <label
+      className="form_input-placeholder"
+      HTMLfor="search">Search</label>
+    </div>
     <button
       type="submit"
       className="foodqueryform_add-btn btn"
-      hidden={!inputValue}>
+      hidden={true}>
           Submit
     </button>
     <button
+    className="form_btn options-btn btn"
     onClick={optionHandlers}
     >{showOptions ? 'Hide options': 'Show options' }</button>
     {showOptions ? <FormChecklist dietOptions={dietOptions} intolerance={intolerance}/> : '' }
     <button
       type="submit"
       className="foodqueryform_clear-btn btn"
+      hidden= {true}
       onClick={clearAll}>
       Clear All
     </button>
