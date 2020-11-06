@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import FormChecklist from './FormChecklist';
 
-const Form = ({ formHandler, dietOptions, intolerance }) => {
+const Form = ({ foodOptions, setFoodOptions, formHandler, dietOptions, intolerance }) => {
   const [inputValue, setInputValue] = useState();
   const [showOptions, setShowOptions]= useState(false);
 
@@ -12,6 +12,8 @@ const Form = ({ formHandler, dietOptions, intolerance }) => {
     setInputValue('');
     dietOptions('');
     intolerance('');
+    setFoodOptions([]);
+    console.log(foodOptions.length);
   };
   const inputHandler = e => {
     setInputValue(e.target.value);
@@ -21,7 +23,6 @@ const Form = ({ formHandler, dietOptions, intolerance }) => {
     if (inputValue !== '') {
         formHandler(inputValue);
     }
-    setShowOptions(false);
   };
   const optionHandlers = e => {
     e.preventDefault();
@@ -40,26 +41,28 @@ const Form = ({ formHandler, dietOptions, intolerance }) => {
       required /> 
       <label
       className="form_input-placeholder"
-      HTMLfor="search">Search</label>
+      htmlFor="search">Search</label>
     </div>
+    <div className="btn-container">
     <button
       type="submit"
-      className="foodqueryform_add-btn btn"
-      hidden={true}>
+      className="form_add-btn btn"
+      style={{visibility: !inputValue?"hidden":"visible"}}>
           Submit
     </button>
+    <button
+      type="submit"
+      className="form_clear-btn btn"
+      style={{visibility: foodOptions.length<1?"hidden":"visible"}}
+      onClick={clearAll}>
+      Clear All
+    </button>
+    </div>
     <button
     className="form_btn options-btn btn"
     onClick={optionHandlers}
     >{showOptions ? 'Hide options': 'Show options' }</button>
     {showOptions ? <FormChecklist dietOptions={dietOptions} intolerance={intolerance}/> : '' }
-    <button
-      type="submit"
-      className="foodqueryform_clear-btn btn"
-      hidden= {true}
-      onClick={clearAll}>
-      Clear All
-    </button>
   </form>
   );
 };

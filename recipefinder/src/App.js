@@ -50,9 +50,11 @@ const App = () => {
     const filtered = (intolerances)? Object.keys(intolerances).filter((a, index) => Object.values(intolerances)[index]).join(", ") : '';
   return (
     <section className= "main-container">
-    <h1>One Stop Cookbook App</h1>
+    <h1>My Cookbook App</h1>
     <article className= "form-container">
     <Form
+    foodOptions={foodOptions}
+    setFoodOptions={setFoodOptions}
     dietOptions={setDiet}
     intolerance= {setIntolerances}
     formHandler={setQuery}/>
@@ -60,7 +62,16 @@ const App = () => {
     <article className= "content-container">
       
       {query&&query.length>0 ? <h2>{diet} {query}s{filtered.length >0 ? ` with no `+ filtered.toLocaleLowerCase() :''}</h2>: ''}
-    <RecipeList foodOptions={foodOptions ? foodOptions:''}/>
+    <RecipeList
+    fechData= {fetchData}
+    foodOptions={foodOptions ? foodOptions:''}/>
+    {query&&query.length>0 ? <><button
+    className="nav-btn prev-btn btn"
+    >Previous</button>
+    <button
+    className="nav-btn next-btn btn"
+    >Next</button></>: ''}
+    
     </article>
     </section>
   );

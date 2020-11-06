@@ -24,7 +24,7 @@ useEffect(()=> {
     return (
 <>
 
-<select className="select-main" key='dropdown' value= {dropDown} onChange={selectHandler}>
+<select className="select-main" key='dropdown' value= {dropDown||''} onChange={selectHandler}>
   <option key='1' value='' >No dietary preference</option>
   <option key='2' value= "Vegetarian">Vegetarian</option>
   <option key='3' value= "Vegan">Vegan</option>
@@ -32,7 +32,9 @@ useEffect(()=> {
   <option key='5' value= "Ketogenic">High Protein</option>
 </select>
 {intoleranceList.map(i => 
-( <span key={"span"+i}>
+( <span
+  className="checkbox-container" 
+  key={"span"+i}>
   <input
   className="checkbox-input" 
   type="checkbox"
