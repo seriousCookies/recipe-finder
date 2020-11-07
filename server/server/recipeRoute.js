@@ -10,7 +10,7 @@ const headers = {
 }
 
 router.get('/:id', (req, res) => {
-  const recipe1 = "["
+  const recipe1 = `[
     "Marinate strips of flank steak in a drizzle of EVOO, 2 smashed garlic cloves, juice of 1 lime (or lemon), 4 tbs. chopped cilantro and a dash of the seasonings for an hour or two.",
     "If desired, brush jalapenos with a little oil and roast in 400F preheated oven for 30-40 minutes, turning over once halfway through.",
     "In a sauce pan, heat the enchilada sauce until boiling then add the beans. Stir for another couple of minutes and turn off heat.",
@@ -19,8 +19,8 @@ router.get('/:id', (req, res) => {
     "Spread tortilla strands out on individual serving platters, top each with enchilada/bean mixture, salsa and beef/veggie mixture.",
     "Garnish with remaining chopped cilantro, a lime (or lemon) wedge and a roasted jalapeno pepper.",
     "Another optional item you can add is shredded cheese. Before garnishing, top with shredded cheese and pop the plate in the microwave for a minute or until cheese has fully melted."
-    "]"
-    res.json(JSON.parse(recipe1))
+    ]`;
+    res.json(JSON.parse(recipe1));
 // const id = req.params.id;
 // const url =`${baseURL}${id}/analyzedInstructions?${key}`;
 // console.log(url);

@@ -279,63 +279,10 @@ color: white;
   -webkit-filter: blur(0);filter: blur(0); 
   }
 }
-
-
-
-
-
-
-
-
-
-
+// modal: click to expand image/card https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_img
 
 //  blur pictures https://codepen.io/sjmcpherson/pen/tEglL/
-
-// .item {
-//   width: 100%;
-//   display: flex;
-//   flex-flow: row wrap;
-//   justify-content: center;
-//   margin: 2% 0%;
-// }
-// .item-container{
-//   margin:0 auto;
-//   &:hover .item_img{
-//     opacity:.8;
-//     -webkit-filter: blur(5px);
-//     filter: blur(5px);
-//   }
-//   &:hover 
-//   .item_desc {
-//     position: relative;
-//     top: -80%; left:1%;
-//   }
-//   .item_img {
-//     z-index:5;
-//     border-radius: 5px;
-//     cursor: pointer;
-//     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-//     float: left;
-//     margin: 1px;
-//     opacity: 1;
-//     transition: all .3s linear;
-//     &:hover {
-//     box-shadow: 0 5px 15px gba(0,0,0,0.4);
-//     opacity: 1;
-//     transform: scale(1.18);
-//     -webkit-filter: blur(0);filter: blur(0);  
-//     }
-//   }
-// }
-// .item_desc {
-//   font-size: 1rem;
-//   color:white;
-//   width:80%;
-// }
-// .item_img {
-// width:80%;  
-// }
+// flip https://3dtransforms.desandro.com/card-flip
 
 // @media only screen and (max-width: 600px) {
 //   .main-container {
