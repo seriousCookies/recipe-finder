@@ -163,29 +163,46 @@ color: white;
 .gallery-container {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 .item-container {
   box-sizing: border-box;
+  margin: 0 0 2% 0;
   position: relative;
-  width: 32%;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
 }
 .item_img {
   box-sizing: border-box;
+  padding: 2%;
+  background-color: white;
   display: block;
-  width: 100%;
-  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  float: left;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 .item_desc {
   box-sizing: border-box;
   font-size: 1rem;
-  width: 95%;
   padding: auto;  
+  width:100%;
+  max-height: 10%;
 }
+
+.item_recipe {
+  box-sizing: border-box;
+  font-size: 1rem; 
+  display:flex;
+  justify-content: center;
+}
+.item_recipe>ol {
+  padding: 0 20px;
+}
+//overlay 
 .overlay {
   position: absolute;
   bottom: 3%;
@@ -208,7 +225,7 @@ color: white;
 
 // flip cards
 .scene {
-  width: 200px;
+  width: 300px;
   height: 260px;
   perspective: 600px;
 }
@@ -226,20 +243,52 @@ color: white;
   backface-visibility: hidden;
 }
 .card__face--front {
-  top:10%;
-  background: red;
-}
-.item_desc {
-  width:50%;
+  top:0%;
 }
 
 .card__face--back {
-  background: blue;
+  background: #3283a8;
   transform: rotateY( 180deg );
+  font-size: 0.57rem;
+  text-align: left;
 }
 .card.is-flipped {
   transform: rotateY(180deg);
 }
+
+//blur pictures
+.gallery-container {
+  margin:0 auto;
+  &:hover .item-container .item_img {
+    opacity:.8;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+  }
+}
+.item-container:hover .item_img {
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  float: left;
+  margin: 1px;
+  opacity: 1;
+  transition: all .3s linear;
+  &:hover {
+  box-shadow: 0 5px 15px gba(0,0,0,0.4);
+  opacity: 1;
+  transform: scale(1.08);
+  -webkit-filter: blur(0);filter: blur(0); 
+  }
+}
+
+
+
+
+
+
+
+
+
+
 
 //  blur pictures https://codepen.io/sjmcpherson/pen/tEglL/
 
