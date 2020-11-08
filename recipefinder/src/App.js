@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import Form from './components/Form';
 import RecipeList from './components/RecipeList'
 import {getSearch} from './components/ApiClient'
@@ -8,48 +8,49 @@ export const fetchData = async (query, fn, setState) => {
   const newData = await fn(query);
   setState(newData);
 }
+export const galleryContext = createContext();
 
 const App = () => {
-  const [query, setQuery] = useState();
-  const [diet, setDiet] = useState();
-  const [intolerances, setIntolerances] = useState();
+  const [query, setQuery] = useState(null);
+  const [diet, setDiet] = useState(null);
+  const [intolerances, setIntolerances] = useState(null);
   const [foodOptions, setFoodOptions] = useState([]);
 
   useEffect(()=> {
-    let q = `${query}/null/null`
-    if (diet) {
-      q =`${query}/${diet}/null`
+    let oneIntolerance = intolerances? Object.keys(intolerances).filter(id => intolerances[id])[0]: null;
+    let q;
+    switch (true) {
+      case query !==null && diet !==null && oneIntolerance !== undefined:
+       q =`${query}/${diet}/${oneIntolerance}`
+       break;
+      case query !==null  && diet !==null:
+       q =`${query}/${diet}/null`
+       break;
+      case query !==null && diet !==null && oneIntolerance !== undefined:
+        console.log(oneIntolerance);
+       q =`${query}/null/${oneIntolerance}`
+       break;
+       case query !==null:
+        q =`${query}/null/null`;
+        break;
+      default:
+        q= null;
+        break;
     }
-    if (diet && intolerances) {
-      switch(true)
-      { // ['Dairy', 'Egg', 'Tree Nut', 'Peanut', 'Shellfish']
-        case intolerances["Dairy"]:
-          q =`${query}/${diet}/Dairy`
-          break;
-        case intolerances["Egg"]:
-          q =`${query}/${diet}/Egg`
-          break;
-        case intolerances["Tree Nut"]:
-          q =`${query}/${diet}/Tree%20Nut`
-          break;
-        case intolerances["Peanut"]:
-          q =`${query}/${diet}/Peanut`
-          break;
-        case intolerances["Shellfish"]:
-          q =`${query}/${diet}/Shellfish`
-          break;
-        default: 
-          q =`${query}/${diet}/null`
-      }
-    }
-    if(query !== undefined && query.length > 3)
+    console.log(q);
+    if(query !== null)
     {
       fetchData(q, getSearch, setFoodOptions);
     }
   },[query, diet, intolerances])
-    const filtered = (intolerances)? Object.keys(intolerances).filter((a, index) => Object.values(intolerances)[index]).join(", ") : '';
+    const filtered = (intolerances) ? 
+    Object.keys(intolerances)
+    .filter((a, index) => Object.values(intolerances)[index])
+    .join(", ") : 
+    '';
   return (
-    <section className= "main-container">
+    <galleryContext.Provider value={foodOptions}>
+      <section className= "main-container">
     <h1>My Cookbook App</h1>
     <article className= "form-container">
     <Form
@@ -61,9 +62,8 @@ const App = () => {
     </article>
     <article className= "content-container">
       
-      {query&&query.length>0 ? <h2>{diet} {query}s{filtered.length >0 ? ` with no `+ filtered.toLocaleLowerCase() :''}</h2>: ''}
-    <RecipeList
-    foodOptions={foodOptions ? foodOptions:''}/>
+      {query&&query.length> 0 ? <h2>{diet === "null"? '': diet} {query}s{filtered.length >0 ? ` with no `+ filtered.toLocaleLowerCase() :''}</h2>: ''}
+    <RecipeList/>
     {query&&query.length>0 ? <><button
     className="nav-btn prev-btn btn"
     >Previous</button>
@@ -73,6 +73,8 @@ const App = () => {
     
     </article>
     </section>
+
+    </galleryContext.Provider>
   );
 }
 

@@ -25,7 +25,7 @@ useEffect(()=> {
 <>
 
 <select className="select-main" key='dropdown' value= {dropDown||''} onChange={selectHandler}>
-  <option key='1' value='' >No dietary preference</option>
+  <option key='1' value='null' >No dietary preference</option>
   <option key='2' value= "Vegetarian">Vegetarian</option>
   <option key='3' value= "Vegan">Vegan</option>
   <option key='4' value= "Gluten Free">Gluten Free</option>

@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import FormChecklist from './FormChecklist';
+import { galleryContext } from '../App';
 
-const Form = ({ foodOptions, setFoodOptions, formHandler, dietOptions, intolerance }) => {
+const Form = ({ setFoodOptions, formHandler, dietOptions, intolerance }) => {
   const [inputValue, setInputValue] = useState();
   const [showOptions, setShowOptions]= useState(false);
+  const foodOptions = useContext(galleryContext);
 
   const clearAll = e => {
     e.preventDefault();
     setInputValue();
-    formHandler([]);
-    setInputValue('');
-    dietOptions('');
-    intolerance('');
+    formHandler(null);
+    setInputValue(null);
+    dietOptions(null);
+    intolerance(null);
     setFoodOptions([]);
   };
   const inputHandler = e => {
