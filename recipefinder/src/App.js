@@ -15,22 +15,31 @@ const App = () => {
   const [diet, setDiet] = useState(null);
   const [intolerances, setIntolerances] = useState(null);
   const [foodOptions, setFoodOptions] = useState([]);
-
+  const oneIntolerance = intolerances? Object.keys(intolerances).filter(id => intolerances[id])[0]: null;
   useEffect(()=> {
-    let oneIntolerance = intolerances? Object.keys(intolerances).filter(id => intolerances[id])[0]: null;
     let q;
+    let switchCases = {
+      allExist: query !==null && diet !==null && oneIntolerance !== undefined,
+      onlyQuerynDiet: query !==null  && diet !==null,
+      onlyQuerynIntolerance: query !==null && diet ===null && oneIntolerance !== undefined,
+      onlyQuery:query !==null,
+    }
     switch (true) {
-      case query !==null && diet !==null && oneIntolerance !== undefined:
+      case switchCases.allExist:
        q =`${query}/${diet}/${oneIntolerance}`
+       console.log(1);
        break;
-      case query !==null  && diet !==null:
+      case switchCases.onlyQuerynDiet:
        q =`${query}/${diet}/null`
+       console.log(2);
        break;
-      case query !==null && diet !==null && oneIntolerance !== undefined:
-        console.log(oneIntolerance);
+      case switchCases.onlyQuerynIntolerance:
+        console.log(3);
        q =`${query}/null/${oneIntolerance}`
        break;
-       case query !==null:
+       case switchCases.onlyQuery:
+        console.log(4);
+        console.log(oneIntolerance)
         q =`${query}/null/null`;
         break;
       default:
@@ -43,11 +52,7 @@ const App = () => {
       fetchData(q, getSearch, setFoodOptions);
     }
   },[query, diet, intolerances])
-    const filtered = (intolerances) ? 
-    Object.keys(intolerances)
-    .filter((a, index) => Object.values(intolerances)[index])
-    .join(", ") : 
-    '';
+
   return (
     <galleryContext.Provider value={foodOptions}>
       <section className= "main-container">
@@ -62,7 +67,7 @@ const App = () => {
     </article>
     <article className= "content-container">
       
-      {query&&query.length> 0 ? <h2>{diet === "null"? '': diet} {query}s{filtered.length >0 ? ` with no `+ filtered.toLocaleLowerCase() :''}</h2>: ''}
+      {query&&query.length> 0 ? <h2>{diet === "null"? '': diet} {query}s{oneIntolerance ? ` with no `+ oneIntolerance.toLocaleLowerCase() :''}</h2>: ''}
     <RecipeList/>
     {query&&query.length>0 ? <><button
     className="nav-btn prev-btn btn"
