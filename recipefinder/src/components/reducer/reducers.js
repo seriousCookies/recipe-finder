@@ -1,20 +1,31 @@
-import ACTIONS from './actions';
+import { ACTIONS } from './actions';
 
-const querySetter = (query, state) => {
-const newQuery = state.query
+const stateUpdater = (action, state) => {
+const newQuery = state;
+return {...newQuery, [action.state]: action.value}
 };
+
+const stateClearer = () => {
+    return {
+        query: null,
+        diet: null,
+        intolerances: null,
+        foodOptions: []
+    }
+    };
 
 const reducer = (state, action) =>  {
     switch (action.type) {
-        case ACTIONS.SETQUERY:
-            return querySetter(action.payload, state);
-            break;
-    
+        case ACTIONS.UPDATESTATE:
+            return stateUpdater(action, state);
+        case ACTIONS.CLEARALLSTATE:
+            return stateClearer();
         default:
-            break;
+            return state;
     }
 
 }
+export default reducer;
 
 // const reducer = (state, action) => {
 //     switch (action.type) {

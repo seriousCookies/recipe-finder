@@ -1,20 +1,18 @@
 import React, { useState, useContext } from 'react';
 import FormChecklist from './FormChecklist';
-import { galleryContext } from '../App';
-
-const Form = ({ setFoodOptions, formHandler, dietOptions, intolerance }) => {
+import { stateContext,dispatchContext } from '../App';
+import { ACTIONS } from './reducer/actions';
+const Form = () => {
   const [inputValue, setInputValue] = useState();
   const [showOptions, setShowOptions]= useState(false);
-  const foodOptions = useContext(galleryContext);
+
+  const state = useContext(stateContext);
+  const dispatch = useContext(dispatchContext);
 
   const clearAll = e => {
     e.preventDefault();
-    setInputValue();
-    formHandler(null);
     setInputValue(null);
-    dietOptions(null);
-    intolerance(null);
-    setFoodOptions([]);
+    dispatch({type:ACTIONS.CLEARALLSTATE});
   };
   const inputHandler = e => {
     setInputValue(e.target.value);
@@ -22,8 +20,9 @@ const Form = ({ setFoodOptions, formHandler, dietOptions, intolerance }) => {
   const submitHandler = e => {
     e.preventDefault();
     if (inputValue !== '') {
-        formHandler(inputValue);
+        dispatch({type:ACTIONS.UPDATESTATE, state: 'query', value:inputValue});
     }
+    setInputValue('');
   };
   const optionHandlers = e => {
     e.preventDefault();
@@ -54,7 +53,7 @@ const Form = ({ setFoodOptions, formHandler, dietOptions, intolerance }) => {
     <button
       type="submit"
       className="form_clear-btn btn"
-      style={{visibility: foodOptions.length<1?"hidden":"visible"}}
+      style={{visibility: state.foodOptions.length<1?"hidden":"visible"}}
       onClick={clearAll}>
       Clear All
     </button>
@@ -63,7 +62,7 @@ const Form = ({ setFoodOptions, formHandler, dietOptions, intolerance }) => {
     className="form_btn options-btn btn"
     onClick={optionHandlers}
     >{showOptions ? 'Hide options': 'Show options' }</button>
-    {showOptions ? <FormChecklist dietOptions={dietOptions} intolerance={intolerance}/> : '' }
+    {showOptions ? <FormChecklist /> : '' }
   </form>
   );
 };

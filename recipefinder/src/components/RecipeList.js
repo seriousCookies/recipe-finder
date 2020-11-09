@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
-import { galleryContext } from '../App';
+import { stateContext } from '../App';
 import RecipeItem from './RecipeItem';
 
 const RecipeList = () => {
-const foodOptions = useContext(galleryContext);
+const state = useContext(stateContext);
+console.log(state.foodOptions);
 
   return (
     <div className= 'gallery-container'>
-    {foodOptions ? foodOptions.map(t => (
+    {state.foodOptions ? state.foodOptions.map(t => (
       <RecipeItem
       id={t.id}
       key={t.id}

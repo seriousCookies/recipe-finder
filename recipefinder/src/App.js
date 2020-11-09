@@ -1,16 +1,28 @@
-import React, { useState, useEffect, createContext } from 'react';
+import React, { useState, useEffect, createContext, useReducer } from 'react';
 import Form from './components/Form';
 import RecipeList from './components/RecipeList'
 import {getSearch} from './components/ApiClient'
 import './App.scss';
+import reducer from './components/reducer/reducers.js';
+import { ACTIONS } from './components/reducer/actions';
 
-export const fetchData = async (query, fn, setState) => {
+export const fetchData = async (query, fn, cb) => {
   const newData = await fn(query);
-  setState(newData);
-}
-export const galleryContext = createContext();
+  cb({type:ACTIONS.UPDATESTATE, state: 'foodOptions', value:newData})
 
+}
+export const stateContext = createContext();
+export const dispatchContext = createContext();
+
+const initState = {
+  query: null,
+  diet: null,
+  intolerances: null,
+  foodOptions: []
+  }
 const App = () => {
+const [state, dispatch]= useReducer(reducer, initState);
+
   const [query, setQuery] = useState(null);
   const [diet, setDiet] = useState(null);
   const [intolerances, setIntolerances] = useState(null);
@@ -22,7 +34,7 @@ const App = () => {
       allExist: query !==null && diet !==null && oneIntolerance !== undefined,
       onlyQuerynDiet: query !==null  && diet !==null,
       onlyQuerynIntolerance: query !==null && diet ===null && oneIntolerance !== undefined,
-      onlyQuery:query !==null,
+      onlyQuery:state.query !==null,
     }
     switch (true) {
       case switchCases.allExist:
@@ -40,34 +52,32 @@ const App = () => {
        case switchCases.onlyQuery:
         console.log(4);
         console.log(oneIntolerance)
-        q =`${query}/null/null`;
+        q =`${state.query}/null/null`;
         break;
       default:
         q= null;
         break;
     }
     console.log(q);
-    if(query !== null)
+    if(state.query !== null)
     {
-      fetchData(q, getSearch, setFoodOptions);
+      fetchData(q, getSearch, dispatch);
     }
-  },[query, diet, intolerances])
+  },[query, diet, state, intolerances])
 
   return (
-    <galleryContext.Provider value={foodOptions}>
+    <stateContext.Provider value={state}>
+      <dispatchContext.Provider value = {dispatch}>
       <section className= "main-container">
     <h1>My Cookbook App</h1>
     <article className= "form-container">
     <Form
     foodOptions={foodOptions}
-    setFoodOptions={setFoodOptions}
-    dietOptions={setDiet}
-    intolerance= {setIntolerances}
-    formHandler={setQuery}/>
+  />
     </article>
     <article className= "content-container">
       
-      {query&&query.length> 0 ? <h2>{diet === "null"? '': diet} {query}s{oneIntolerance ? ` with no `+ oneIntolerance.toLocaleLowerCase() :''}</h2>: ''}
+      {query&&query.length> 0 ? <h2>{state.diet === "null"? '': state.diet} {state.query}s{oneIntolerance ? ` with no `+ oneIntolerance.toLocaleLowerCase() :''}</h2>: ''}
     <RecipeList/>
     {query&&query.length>0 ? <><button
     className="nav-btn prev-btn btn"
@@ -78,8 +88,8 @@ const App = () => {
     
     </article>
     </section>
-
-    </galleryContext.Provider>
+      </dispatchContext.Provider>
+    </stateContext.Provider>
   );
 }
 

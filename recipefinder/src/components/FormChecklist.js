@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { dispatchContext } from '../App';
+import { ACTIONS } from './reducer/actions';
 
-const FormChecklist = ({dietOptions, intolerance}) => {
+const FormChecklist = () => {
   const [dropDown, setDropDown] = useState(null);
   const [isChecked,setisChecked] = useState(
     {Dairy: false, Egg: false, "Tree Nut": false, Peanut: false, Shellfish: false}
   );
+  const dispatch = useContext(dispatchContext);
+
   const selectHandler = e => {
     e.preventDefault(); 
     setDropDown(e.target.value)
   };
-
   const intoleranceList = ['Dairy', 'Egg', 'Tree Nut', 'Peanut', 'Shellfish'];
   const checkboxHandler = e => {
     //e.preventDefault();
@@ -18,9 +21,9 @@ const FormChecklist = ({dietOptions, intolerance}) => {
     setisChecked({...temp});
   }
 useEffect(()=> {
-  intolerance(isChecked);
-  dietOptions(dropDown);
-},[isChecked, dropDown, intolerance, dietOptions]);
+  dispatch({type:ACTIONS.UPDATESTATE, state: 'intolerances', value:isChecked});
+  dispatch({type:ACTIONS.UPDATESTATE, state: 'dietOptions', value:dropDown});
+},[isChecked, dropDown]);
     return (
 <>
 
