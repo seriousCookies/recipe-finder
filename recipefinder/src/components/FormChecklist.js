@@ -22,7 +22,7 @@ const FormChecklist = () => {
   }
 useEffect(()=> {
   dispatch({type:ACTIONS.UPDATESTATE, state: 'intolerances', value:isChecked});
-  dispatch({type:ACTIONS.UPDATESTATE, state: 'dietOptions', value:dropDown});
+  dispatch({type:ACTIONS.UPDATESTATE, state: 'diet', value:dropDown});
 },[isChecked, dropDown]);
     return (
 <>

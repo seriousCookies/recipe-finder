@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext, useReducer } from 'react';
+import React, { useEffect, createContext, useReducer } from 'react';
 import Form from './components/Form';
 import RecipeList from './components/RecipeList'
 import {getSearch} from './components/ApiClient'
@@ -23,31 +23,29 @@ const initState = {
 const App = () => {
 const [state, dispatch]= useReducer(reducer, initState);
 
-  const [query, setQuery] = useState(null);
-  const [diet, setDiet] = useState(null);
-  const [intolerances, setIntolerances] = useState(null);
-  const [foodOptions, setFoodOptions] = useState([]);
-  const oneIntolerance = intolerances? Object.keys(intolerances).filter(id => intolerances[id])[0]: null;
+  const oneIntolerance = state.intolerances? Object.keys(state.intolerances).filter(id => state.intolerances[id])[0]: null;
+  
+  console.log(oneIntolerance)
   useEffect(()=> {
     let q;
     let switchCases = {
-      allExist: query !==null && diet !==null && oneIntolerance !== undefined,
-      onlyQuerynDiet: query !==null  && diet !==null,
-      onlyQuerynIntolerance: query !==null && diet ===null && oneIntolerance !== undefined,
+      allExist: state.query !==null && state.diet !==null && oneIntolerance !== undefined,
+      onlyQuerynDiet: state.query !==null  && state.diet !==null,
+      onlyQuerynIntolerance: state.query !==null && state.diet ===null && oneIntolerance !== undefined,
       onlyQuery:state.query !==null,
     }
     switch (true) {
       case switchCases.allExist:
-       q =`${query}/${diet}/${oneIntolerance}`
+       q =`${state.query}/${state.diet}/${oneIntolerance}`
        console.log(1);
        break;
       case switchCases.onlyQuerynDiet:
-       q =`${query}/${diet}/null`
+       q =`${state.query}/${state.diet}/null`
        console.log(2);
        break;
       case switchCases.onlyQuerynIntolerance:
         console.log(3);
-       q =`${query}/null/${oneIntolerance}`
+       q =`${state.query}/null/${oneIntolerance}`
        break;
        case switchCases.onlyQuery:
         console.log(4);
@@ -55,6 +53,7 @@ const [state, dispatch]= useReducer(reducer, initState);
         q =`${state.query}/null/null`;
         break;
       default:
+        console.log(5)
         q= null;
         break;
     }
@@ -63,7 +62,7 @@ const [state, dispatch]= useReducer(reducer, initState);
     {
       fetchData(q, getSearch, dispatch);
     }
-  },[query, diet, state, intolerances])
+  },[state])
 
   return (
     <stateContext.Provider value={state}>
@@ -71,15 +70,13 @@ const [state, dispatch]= useReducer(reducer, initState);
       <section className= "main-container">
     <h1>My Cookbook App</h1>
     <article className= "form-container">
-    <Form
-    foodOptions={foodOptions}
-  />
+    <Form/>
     </article>
     <article className= "content-container">
       
-      {query&&query.length> 0 ? <h2>{state.diet === "null"? '': state.diet} {state.query}s{oneIntolerance ? ` with no `+ oneIntolerance.toLocaleLowerCase() :''}</h2>: ''}
+      {state.query&&state.query.length> 0 ? <h2>{state.diet === "null"? '': state.diet} {state.query}s{oneIntolerance ? ` with no `+ oneIntolerance.toLocaleLowerCase() :''}</h2>: ''}
     <RecipeList/>
-    {query&&query.length>0 ? <><button
+    {state.query&&state.query.length>0 ? <><button
     className="nav-btn prev-btn btn"
     >Previous</button>
     <button
