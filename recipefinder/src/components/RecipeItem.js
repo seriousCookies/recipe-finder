@@ -8,9 +8,8 @@ const [recipe, setRecipe]=useState();
 
 const fetchRecipes= async e => {
 e.preventDefault();
-console.log(e.target.tagName ==='LI');
+await fetchData(id, getRecipe, setRecipe)
 e.target.closest(".card").classList.toggle('is-flipped');
-await fetchData(id,getRecipe, setRecipe)
 }
 
   return (
@@ -20,7 +19,7 @@ await fetchData(id,getRecipe, setRecipe)
     className="item btn card">
             <img className="item_img card__face card__face--front" src={image} alt={title}/>
             <div className="item_desc overlay card__face card__face--front">{title}</div>
-            {recipe && recipe.length>1 ?
+            {recipe !== undefined ?
               <RecipeSteps
               recipe={recipe}
               />

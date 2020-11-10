@@ -21,8 +21,8 @@ const Form = () => {
     e.preventDefault();
     if (inputValue !== '') {
         dispatch({type:ACTIONS.UPDATESTATE, state: 'query', value:inputValue});
-    }
-    setInputValue('');
+        setInputValue('')
+    };
   };
   const optionHandlers = e => {
     e.preventDefault();

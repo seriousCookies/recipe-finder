@@ -24,8 +24,6 @@ const App = () => {
 const [state, dispatch]= useReducer(reducer, initState);
 
   const oneIntolerance = state.intolerances? Object.keys(state.intolerances).filter(id => state.intolerances[id])[0]: null;
-  
-  console.log(oneIntolerance)
   useEffect(()=> {
     let q;
     let switchCases = {
@@ -62,7 +60,7 @@ const [state, dispatch]= useReducer(reducer, initState);
     {
       fetchData(q, getSearch, dispatch);
     }
-  },[state])
+  },[state.query, state.diet, state.intolerances])
 
   return (
     <stateContext.Provider value={state}>
