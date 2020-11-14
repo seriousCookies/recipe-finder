@@ -1,14 +1,16 @@
-import React, { useState }  from 'react';
+import React, { useState, useContext }  from 'react';
 import {getRecipe} from './ApiClient';
 import {fetchData} from '../App';
 import RecipeSteps from './RecipeSteps';
+import { stateContext } from '../App';
 
 const RecipeItem = ({id, title, image}) => {
+  
 const [recipe, setRecipe]=useState();
-
+const state = useContext(stateContext);
 const fetchRecipes= async e => {
 e.preventDefault();
-await fetchData(id, getRecipe, setRecipe)
+await fetchData(id, state.page, getRecipe, setRecipe)
 e.target.closest(".card").classList.toggle('is-flipped');
 }
 

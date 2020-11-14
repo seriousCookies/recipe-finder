@@ -3,7 +3,7 @@ import { dispatchContext } from '../App';
 import { ACTIONS } from './reducer/actions';
 
 const FormChecklist = () => {
-  const [dropDown, setDropDown] = useState(null);
+  const [dropDown, setDropDown] = useState("");
   const [isChecked,setisChecked] = useState(
     {Dairy: false, Egg: false, "Tree Nut": false, Peanut: false, Shellfish: false}
   );
@@ -23,12 +23,12 @@ const FormChecklist = () => {
 useEffect(()=> {
   dispatch({type:ACTIONS.UPDATESTATE, state: 'intolerances', value:isChecked});
   dispatch({type:ACTIONS.UPDATESTATE, state: 'diet', value:dropDown});
-},[isChecked, dropDown]);
+},[dispatch,isChecked, dropDown]);
     return (
 <>
 
-<select className="select-main" key='dropdown' value= {dropDown||''} onChange={selectHandler}>
-  <option key='1' value='null' >No dietary preference</option>
+<select className="select-main" key='dropdown' value= {dropDown||""} onChange={selectHandler}>
+  <option key='1' value= "" >No dietary preference</option>
   <option key='2' value= "Vegetarian">Vegetarian</option>
   <option key='3' value= "Vegan">Vegan</option>
   <option key='4' value= "Gluten Free">Gluten Free</option>

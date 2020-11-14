@@ -7,7 +7,7 @@ const RecipeSteps = ({recipe}) => {
     <div className="item_recipe card__face card__face--back overlay">
       <ol>
       {recipe.value && recipe.value.length>1 ? recipe.value.map(t => 
-      <li key={t.value}>
+      <li key={t}>
         {t}
       </li>):''}
       </ol>

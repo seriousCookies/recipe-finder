@@ -12,7 +12,8 @@ const stateClearer = () => {
         intolerances: null,
         foodOptions: []
     }
-    };
+};
+
 
 const reducer = (state, action) =>  {
     switch (action.type) {

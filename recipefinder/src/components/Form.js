@@ -53,7 +53,7 @@ const Form = () => {
     <button
       type="submit"
       className="form_clear-btn btn"
-      style={{visibility: state.foodOptions.length<1?"hidden":"visible"}}
+      style={{visibility: state.foodOptions?"hidden":"visible"}}
       onClick={clearAll}>
       Clear All
     </button>

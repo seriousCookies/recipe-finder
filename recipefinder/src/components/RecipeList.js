@@ -4,8 +4,7 @@ import RecipeItem from './RecipeItem';
 
 const RecipeList = () => {
 const state = useContext(stateContext);
-console.log(state.foodOptions);
-
+if (state.foodOptions !== [])
   return (
     <div className= 'gallery-container'>
     {state.foodOptions ? state.foodOptions.map(t => (

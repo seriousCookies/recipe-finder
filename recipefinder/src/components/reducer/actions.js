@@ -1,4 +1,6 @@
 export const ACTIONS = {
     UPDATESTATE: 'updateState',
-    CLEARALLSTATE: 'clearAllState'
+    CLEARALLSTATE: 'clearAllState',
+    // UPDATEPAGE: 'updatePage',
+    // UPDATEPARAMS: 'updateParams'
 }
