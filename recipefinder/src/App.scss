@@ -284,17 +284,17 @@ color: white;
 //  blur pictures https://codepen.io/sjmcpherson/pen/tEglL/
 // flip https://3dtransforms.desandro.com/card-flip
 
-// @media only screen and (max-width: 600px) {
-//   .main-container {
-//     width:90%;
-//   }
-//   .form{
-//     margin-top:5%;
-//   }
-//   .select-main{
-//     width: 100%;
-//   }
-//   .item {
-//     width:100%;  
-//     }
-// }
+@media only screen and (max-width: 900px) {
+  .main-container {
+    width:90%;
+  }
+  .form{
+    margin-top:5%;
+  }
+  .select-main{
+    width: 100%;
+  }
+  .item {
+    width:100%;  
+    }
+}
