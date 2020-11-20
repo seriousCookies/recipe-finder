@@ -1,0 +1,300 @@
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+  width: 60%;
+  color: #3283a8;
+  background-color: aliceblue;
+  border-radius: 5px;
+  font-family: 'Nunito', sans-serif;
+}
+.main-container > h1 {
+  margin: 5% 0 0 0;
+text-align: center;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin: 5%;
+  padding:3% 3% 2%;
+  width:80%;
+  background-color: skyblue;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+.form {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  width:100%; 
+  
+}
+/* floating label https://codepen.io/peiche/pen/xOVpPo */
+.form_input {
+  border-style: none;
+  background: transparent;
+  border-bottom: 2px solid white;
+  width:90%;
+  margin: 5% 0 0 5%;
+  transition: border-color 0.2s;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: row;
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+.form_input:focus {
+  outline: none;
+ }
+
+.has-float-label {
+  position: relative; 
+  padding:0;
+  color: white;
+  font-size: 1.2rem;
+  width:100%;
+}
+
+.form_input-placeholder {
+  position: absolute;
+  top: 25%;
+  margin-left: 2%;
+  padding: 14px 0 0 23px;
+  transition: all 300ms;
+}
+
+.form-control:focus + .form_input-placeholder,
+.form-control:valid + .form_input-placeholder {
+  font-size: 80%;
+  transform: translate3d(0, -70%, 0);
+  color: #3283a8;
+}
+.btn-container {
+  background-color: transparent;
+  width:100%;
+  display: flex;
+  flex-flow: row wrap;
+}
+.btn {
+  background: transparent;
+  color: white;
+  border-style: none;
+  outline: none;
+  width:100%;
+  text-align: left;
+  font-size: 0.9rem;
+}
+.btn:hover {
+  cursor: pointer;
+  color:#3283a8;  
+}
+.btn:active {
+  outline: none;
+  border-style: none;
+  color:#3283a8;
+}
+.prev-btn {
+  text-align: right;
+  width:50%;
+}
+.next-btn {
+  text-align: left;
+  width:50%;
+}
+
+.options-btn{
+  margin-left: 2%;
+  padding: 0 0 0 23px;
+}
+
+.form_add-btn {
+  width: 50%;
+  text-align: right;
+}
+.form_clear-btn {
+  width: 50%;
+  text-align: left;
+}
+.select-main {
+  max-height: auto;
+  align-self: center;
+  background-color:transparent;
+  color: white;
+  border-style: none;
+  font-size: 1rem;
+}
+.checkbox-container{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1%;
+}
+.checkbox-input {
+color: white;
+}
+.checkbox-label {
+  color: white;
+  padding:0 10%;
+  white-space: nowrap;
+  }
+.content-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  background-color: lightblue;
+  margin-bottom: auto;
+  padding: 2%;
+  text-align: center;
+}
+.content-container > h2 {
+  width: 90%;
+  margin: 2% 5%;
+  height:auto;
+}
+
+.gallery-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.item-container {
+  box-sizing: border-box;
+  margin: 0 0 2% 0;
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+.item_img {
+  box-sizing: border-box;
+  padding: 2%;
+  background-color: white;
+  display: block;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  float: left;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.item_desc {
+  box-sizing: border-box;
+  font-size: 1rem;
+  padding: auto;  
+  width:100%;
+  max-height: 10%;
+}
+
+.item_recipe {
+  box-sizing: border-box;
+  font-size: 1rem; 
+  display:flex;
+  justify-content: center;
+}
+.item_recipe>ol {
+  padding: 0 20px;
+}
+//overlay 
+.overlay {
+  position: absolute;
+  bottom: 3%;
+  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  color: #f1f1f1; 
+  transition: .5s ease;
+  opacity:0;
+  color: white;
+  text-align: center;
+}
+
+.item-container:hover .item_desc {
+  opacity: 1;
+}
+.item-container .item_recipe {
+  opacity: 1;
+}
+
+
+
+// flip cards
+.scene {
+  width: 300px;
+  height: 260px;
+  perspective: 600px;
+}
+.card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+.card__face {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+}
+.card__face--front {
+  top:0%;
+}
+
+.card__face--back {
+  background: #3283a8;
+  transform: rotateY( 180deg );
+  font-size: 0.57rem;
+  text-align: left;
+}
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+//blur pictures
+.gallery-container {
+  margin:0 auto;
+  &:hover .item-container .item_img {
+    opacity:.8;
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+  }
+}
+.item-container:hover .item_img {
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  float: left;
+  margin: 1px;
+  opacity: 1;
+  transition: all .3s linear;
+  &:hover {
+  box-shadow: 0 5px 15px gba(0,0,0,0.4);
+  opacity: 1;
+  transform: scale(1.08);
+  -webkit-filter: blur(0);filter: blur(0); 
+  }
+}
+// modal: click to expand image/card https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_modal_img
+
+//  blur pictures https://codepen.io/sjmcpherson/pen/tEglL/
+// flip https://3dtransforms.desandro.com/card-flip
+
+@media only screen and (max-width: 900px) {
+  .main-container {
+    width:90%;
+  }
+  .form{
+    margin-top:5%;
+  }
+  .select-main{
+    width: 100%;
+  }
+  .item {
+    width:100%;  
+    }
+}
