@@ -1,3 +1,7 @@
+# Project description
+
+An app that helps you find recipes easily with search and filter functions for your diet preferences and allergies. 
+
 Built with: 
 - React
 - Express.js
