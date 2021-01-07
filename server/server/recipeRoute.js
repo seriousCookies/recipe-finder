@@ -1,15 +1,15 @@
-const fetch = require('node-fetch');
-const express = require('express');
+const fetch = require("node-fetch");
+const express = require("express");
 const router = express.Router();
 
 global.fetch = fetch;
-const key =`apiKey=${process.env.ACCESS_KEY}`
+const key = `apiKey=${process.env.ACCESS_KEY}`;
 const baseURL = `https://api.spoonacular.com/recipes/`;
 const headers = {
   "Content-Type": "application/json",
-}
+};
 
-router.get('/:id', (req, res) => {
+router.get("/:id", (req, res) => {
   // const recipe1 = `[
   //   "Marinate strips of flank steak in a drizzle of EVOO, 2 smashed garlic cloves, juice of 1 lime (or lemon), 4 tbs. chopped cilantro and a dash of the seasonings for an hour or two.",
   //   "If desired, brush jalapenos with a little oil and roast in 400F preheated oven for 30-40 minutes, turning over once halfway through.",
@@ -21,18 +21,18 @@ router.get('/:id', (req, res) => {
   //   "Another optional item you can add is shredded cheese. Before garnishing, top with shredded cheese and pop the plate in the microwave for a minute or until cheese has fully melted."
   //   ]`;
   //   res.json(JSON.parse(recipe1));
-const id = req.params.id;
-const url =`${baseURL}${id}/analyzedInstructions?${key}`;
-  fetch(url, { method: 'GET', headers: headers})
-  .then((res) =>  res.json())
-  .then((json) => {
-    const data = json[0].steps;
-    const filteredData = data.map(x=>x.step)
-    res.json(filteredData);
-  })
-  .catch(err => {
-    console.log(err);
-    res.json({ error: err.message });
-  });
+  const id = req.params.id;
+  const url = `${baseURL}${id}/analyzedInstructions?${key}`;
+  fetch(url, { method: "GET", headers: headers })
+    .then((res) => res.json())
+    .then((json) => {
+      const data = json[0].steps;
+      const filteredData = data.map((x) => x.step);
+      res.json(filteredData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({ error: err.message });
+    });
 });
 module.exports = router;
