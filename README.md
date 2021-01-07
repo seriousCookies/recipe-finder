@@ -2,8 +2,8 @@
   <h3 align="center">MVP Recipe Finder</h3>
   <p align="center">
 Hackday project- Make a recipe finder with filter options for dietary preferences and allergies.
-https://recipe-finder-mvp.herokuapp.com/
 <a href="https://recipe-finder-mvp.herokuapp.com/" target="_blank"> <img src="images\screenshot.png" alt="screenshot"> </a>
+https://recipe-finder-mvp.herokuapp.com/
   </p>
 
 ## About The Project
