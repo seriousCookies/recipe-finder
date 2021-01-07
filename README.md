@@ -1,8 +1,17 @@
 <!-- ABOUT THE PROJECT -->
+  <h3 align="center">MVP Recipe Finder</h3>
+  <p align="center">
+Hackday project- Make a recipe finder with filter options for dietary preferences and allergies.
+    <img src="images\screenshot.png" alt="screenshot">
+  </p>
 
 ## About The Project
 
-Hackday project- Make a recipe finder with filter options for dietary preferences and allergies.
+features
+
+- search
+- filter
+- pagination
 
 ### Built With
 
@@ -18,4 +27,4 @@ Hackday project- Make a recipe finder with filter options for dietary preference
 
 - <a href="https://expressjs.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> </a>[express](https://expressjs.com)
 
-- </a> <a href="https://heroku.com" target="_blank"> <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40"/> </a>[Deployed with Heroku](https://heroku.com)
+- </a> <a href="https://heroku.com" target="_blank"> <img src="https://www.vectorlogo.zone/logos/heroku/heroku-icon.svg" alt="heroku" width="40" height="40"/> </a>[Deployed with Heroku](https://recipe-finder-mvp.herokuapp.com/)
