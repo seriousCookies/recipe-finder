@@ -1,12 +1,12 @@
 <!-- ABOUT THE PROJECT -->
-  <h2 align="center">One Cookbook App</h2>
+  <h2 align="center">My Cookbook App</h2>
   <p align="center">
 <a href="https://recipe-finder-mvp.herokuapp.com/" target="_blank"> <img src="images\foodFinder.png" alt="screenshot"> </a>
 https://recipe-finder-mvp.herokuapp.com/
   </p>
 
 ### About The Project
-One Cookbook App was a project which I put together for the purpose of a Hackathon day at Salt. This was a simple project with the main goal of the challenge to build a functional product within one day. Beside the obvious timeframe challenge, my goal in this project was also to utilise my knowledge in React, NodeJS and ExpressJS. 
+My Cookbook App was a project which I put together for the purpose of a Hackathon day at Salt. This was a simple project with the main goal of the challenge to build a functional product within one day. Beside the obvious timeframe challenge, my goal in this project was also to utilise my knowledge in React, NodeJS and ExpressJS. 
 
 #### Features
 The main features this app was to deliver on includes
