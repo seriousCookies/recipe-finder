@@ -1,18 +1,18 @@
 <!-- ABOUT THE PROJECT -->
-  <h3 align="center">MVP Recipe Finder</h3>
+  <h2 align="center">One Cookbook App</h2>
   <p align="center">
-Hackday project- Make a recipe finder with filter options for dietary preferences and allergies.
 <a href="https://recipe-finder-mvp.herokuapp.com/" target="_blank"> <img src="images\screenshot.png" alt="screenshot"> </a>
 https://recipe-finder-mvp.herokuapp.com/
   </p>
 
-## About The Project
+### About The Project
+One Cookbook App was a project which I put together for the purpose of a Hackathon day at Salt. This was a simple project with the main goal of the challenge to build a functional product within one day. Beside the obvious timeframe challenge, my goal in this project was also to utilise my knowledge in React, NodeJS and ExpressJS. 
 
-features
-
-- search
-- filter
-- pagination
+#### Features
+The main features this app was to deliver on includes
+- Searchbar- users are able to enter in a search and the application returns results
+- Filter- through the use of dropdown selections and checkboxes, searches are filtered
+- Pagination- ensuring easy navigation for large search results
 
 ### Built With
 
