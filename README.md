@@ -1,7 +1,7 @@
 <!-- ABOUT THE PROJECT -->
   <h2 align="center">One Cookbook App</h2>
   <p align="center">
-<a href="https://recipe-finder-mvp.herokuapp.com/" target="_blank"> <img src="images\screenshot.png" alt="screenshot"> </a>
+<a href="https://recipe-finder-mvp.herokuapp.com/" target="_blank"> <img src="images\foodFinder.png" alt="screenshot"> </a>
 https://recipe-finder-mvp.herokuapp.com/
   </p>
 
